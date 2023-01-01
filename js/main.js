@@ -11,7 +11,7 @@ selectList.addEventListener('change', function () {
 function isNotEmpty(caller) {
 	if (caller.val() == '') {
 		caller.css('border', '1px solid red')
-		alert('Puste pole')
+		alert('Empty field')
 		return false
 	} else caller.css('border', '')
 	return true
@@ -107,7 +107,7 @@ function handleForm(event) {
 	let contacttown = $('#contacttown')
 	let contactpostcode = $('#postcode')
 	if (tablebody.childElementCount > 0) {
-		if (confirm('Ready to send? Check twice!')) {
+		if (confirm('Send? Check twice')) {
 			showLoader()
 			$.ajax({
 				url: 'sendEmail.php',
@@ -134,14 +134,14 @@ function handleForm(event) {
 				success: function (response) {
 					hideLoader()
 					window.location.reload()
-					alert('Wysłano')
+					alert('Request sended')
 				},
 			})
 		} else {
 			return false
 		}
 	} else {
-		alert('Nie dodano produktów')
+		alert('Product table is empty')
 		return false
 	}
 }

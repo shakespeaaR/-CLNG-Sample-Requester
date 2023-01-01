@@ -43,9 +43,12 @@ a:hover {
 	z-index: 0;
 }
 
-input[type=text]:invalid{
+.example {
+	font-size: 0.8rem;
+}
+input[type='text']:invalid {
 	border: 1px solid red;
-  }
+}
 
 .bgloader {
 	display: none;

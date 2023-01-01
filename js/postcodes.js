@@ -208,8 +208,8 @@ let postCodePatterns = {
 		example: '99999',
 	},
 	Ireland: {
-		pattern: '[A-Z]{1,2}[0-9][0-9 A-Z][0-9][A-Z]{2}',
-		example: 'A1 1AA',
+		pattern: '[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}',
+		example: 'A9 9AA, A99 9AA, AA9 9AA, AA99 9AA, A9A 9AA, AA9A 9AA',
 	},
 	Jamaica: {
 		pattern: '[0-9]{5}',
@@ -488,7 +488,7 @@ let postCodePatterns = {
 		example: '99999',
 	},
 	'United Kingdom': {
-		pattern: '[A-Z]{1,2}[0-9] [0-9 A-Z][0-9][A-Z]{2}',
+		pattern: '[A-Za-z]{1,2}[0-9Rr][0-9A-Za-z]? [0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}',
 		example: 'A9 9AA, A99 9AA, AA9 9AA, AA99 9AA, A9A 9AA, AA9A 9AA',
 	},
 	'United Arab Emirates': {
@@ -525,52 +525,6 @@ let postCodePatterns = {
 	},
 }
 
-// function setPattern() {
-// 	let country = document.getElementById('country').value
-// 	let postcode = document.getElementById('postcode')
-// 	if (country == 'UK') {
-// 		postcode.setAttribute('pattern', '[A-Z]{1,2}[0-9][0-9A-Z]\s[0-9][A-Z]{2}')
-// 	} else if (country == 'France') {
-// 		postcode.setAttribute('pattern', '[0-9]{5}')
-// 	} else if (country == 'Germany') {
-// 		postcode.setAttribute('pattern', '[0-9]{5}')
-// 	} else if (country == 'Italy') {
-// 		postcode.setAttribute('pattern', '[0-9]{5}')
-// 	} else if (country == 'Spain') {
-// 		postcode.setAttribute('pattern', '[0-9]{5}')
-// 	} else if (country == 'Poland') {
-// 		postcode.setAttribute('pattern', '[0-9]{2}-[0-9]{3}')
-// 	} else if (country == 'Netherlands') {
-// 		postcode.setAttribute('pattern', '[0-9]{4}[A-Z]{2}')
-// 	} else if (country == 'Belgium') {
-// 		postcode.setAttribute('pattern', '[0-9]{4}')
-// 	} else if (country == 'Sweden') {
-// 		postcode.setAttribute('pattern', '[0-9]{3}[ ]?[0-9]{2}')
-// 	} else if (country == 'Denmark') {
-// 		postcode.setAttribute('pattern', '[0-9]{4}')
-// 	} else if (country == 'Finland') {
-// 		postcode.setAttribute('pattern', '[0-9]{5}')
-// 	} else if (country == 'Norway') {
-// 		postcode.setAttribute('pattern', '[0-9]{4}')
-// 	} else if (country == 'Ireland') {
-// 		postcode.setAttribute('pattern', '[A-Z]{1,2}[0-9]{1,2}[A-Z]{1,2}')
-// 	} else if (country == 'Portugal') {
-// 		postcode.setAttribute('pattern', '[0-9]{4}-[0-9]{3}')
-// 	} else if (country == 'Greece') {
-// 		postcode.setAttribute('pattern', '[0-9]{3}[ ]?[0-9]{2}')
-// 	} else if (country == 'Czech Republic') {
-// 		postcode.setAttribute('pattern', '[0-9]{3}[ ]?[0-9]{2}')
-// 	} else if (country == 'Hungary') {
-// 		postcode.setAttribute('pattern', '[0-9]{4}')
-// 	} else if (country == 'Slovakia') {
-// 		postcode.setAttribute('pattern', '[0-9]{3}[ ]?[0-9]{2}')
-// 	} else if (country == 'Slovenia') {
-// 		postcode.setAttribute('pattern', '[0-9]{4}')
-// 	}
-// }
-
-// country.onchange = setPattern
-
 let countrySelect = document.createElement('select')
 let selector = document.getElementById('countryselector')
 countrySelect.id = 'country'
@@ -590,7 +544,6 @@ selector.appendChild(countrySelect)
 function setPattern() {
 	let country = document.getElementById('country').value
 	let pattern = postCodePatterns[country].pattern
-	let example = postCodePatterns[country].example
 	let postcodeinput = document.getElementById('postcode')
 	postcodeinput.setAttribute('pattern', pattern)
 	postcodeinput.required = true

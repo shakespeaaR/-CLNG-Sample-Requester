@@ -52,6 +52,10 @@ a:hover {
   z-index: 0;
 }
 
+.example {
+  font-size: 0.8rem;
+}
+
 input[type=text]:invalid {
   border: 1px solid red;
 }

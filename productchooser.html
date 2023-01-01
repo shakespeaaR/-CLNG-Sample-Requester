@@ -1,0 +1,205 @@
+<html>
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            var products = [
+                {
+                    name: 'Apple',
+                    code: 'A'
+                },
+                {
+                    name: 'Banana',
+                    code: 'B'
+                },
+                {
+                    name: 'Cherry',
+                    code: 'C'
+                },
+                {
+                    name: 'Durian',
+                    code: 'D'
+                },
+                {
+                    name: 'Elderberry',
+                    code: 'E'
+                },
+                {
+                    name: 'Fig',
+                    code: 'F'
+                },
+                {
+                    name: 'Grape',
+                    code: 'G'
+                },
+                {
+                    name: 'Huckleberry',
+                    code: 'H'
+                },
+                {
+                    name: 'Iguana',
+                    code: 'I'
+                },
+                {
+                    name: 'Jackfruit',
+                    code: 'J'
+                },
+                {
+                    name: 'Kiwi',
+                    code: 'K'
+                },
+                {
+                    name: 'Lemon',
+                    code: 'L'
+                },
+                {
+                    name: 'Mango',
+                    code: 'M'
+                },
+                {
+                    name: 'Nectarine',
+                    code: 'N'
+                },
+                {
+                    name: 'Orange',
+                    code: 'O'
+                },
+                {
+                    name: 'Papaya',
+                    code: 'P'
+                },
+                {
+                    name: 'Quince',
+                    code: 'Q'
+                },
+                {
+                    name: 'Raspberry',
+                    code: 'R'
+                },
+                {
+                    name: 'Strawberry',
+                    code: 'S'
+                },
+                {
+                    name: 'Tangerine',
+                    code: 'T'
+                },
+                {
+                    name: 'Ugli Fruit',
+                    code: 'U'
+                },
+                {
+                    name: 'Vanilla',
+                    code: 'V'
+                },
+                {
+                    name: 'Watermelon',
+                    code: 'W'
+                },
+                {
+                    name: 'Xigua',
+                    code: 'X'
+                },
+                {
+                    name: 'Yuzu',
+                    code: 'Y'
+                },
+                {
+                    name: 'Zucchini',
+                    code: 'Z'
+                }
+            ];
+
+            var nameInput = document.createElement('input');
+            nameInput.setAttribute('id', 'name');
+            nameInput.setAttribute('placeholder', 'Name');
+            document.body.appendChild(nameInput);
+
+            var codeInput = document.createElement('input');
+            codeInput.setAttribute('id', 'code');
+            codeInput.setAttribute('placeholder', 'Code');
+            document.body.appendChild(codeInput);
+
+            var productList = document.createElement('select');
+            productList.setAttribute('id', 'productList');
+            productList.setAttribute('size', '10');
+            productList.setAttribute('style', 'display: none;');
+            document.body.appendChild(productList);
+
+            var nameInput = document.getElementById('name');
+            var codeInput = document.getElementById('code');
+            var productList = document.getElementById('productList');
+
+            nameInput.addEventListener('input', function () {
+                var name = nameInput.value;
+                var code = codeInput.value;
+                var filteredProducts = products.filter(function (product) {
+                    return product.name.toLowerCase().indexOf(name.toLowerCase()) !== -1 || product.code.toLowerCase().indexOf(code.toLowerCase()) !== -1;
+                });
+                productList.innerHTML = '';
+                filteredProducts.forEach(function (product) {
+                    var option = document.createElement('option');
+                    option.innerHTML = product.name + ' (' + product.code + ')';
+                    option.setAttribute('value', product.name);
+                    productList.appendChild(option);
+                });
+                if (filteredProducts.length > 0) {
+                    productList.style.display = 'block';
+                } else {
+                    productList.style.display = 'none';
+                }
+            });
+
+            codeInput.addEventListener('input', function () {
+                var name = nameInput.value;
+                var code = codeInput.value;
+                var filteredProducts = products.filter(function (product) {
+                    return product.name.toLowerCase().indexOf(name.toLowerCase()) !== -1 || product.code.toLowerCase().indexOf(code.toLowerCase()) !== -1;
+                });
+                productList.innerHTML = '';
+                filteredProducts.forEach(function (product) {
+                    var option = document.createElement('option');
+                    option.innerHTML = product.name + ' (' + product.code + ')';
+                    option.setAttribute('value', product.name);
+                    productList.appendChild(option);
+                });
+                if (filteredProducts.length > 0) {
+                    productList.style.display = 'block';
+                } else {
+                    productList.style.display = 'none';
+                }
+            });
+
+            productList.addEventListener('change', function () {
+                var name = productList.options[productList.selectedIndex].value;
+                var code = products.filter(function (product) {
+                    return product.name === name;
+                })[0].code;
+                nameInput.value = name;
+                codeInput.value = code;
+                productList.style.display = 'none';
+            });
+
+            nameInput.addEventListener('input', function () {
+                if (nameInput.value === '') {
+                    productList.style.display = 'none';
+                }
+            });
+
+            codeInput.addEventListener('input', function () {
+                if (codeInput.value === '') {
+                    productList.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+Saudi, Arabia, Argentina, Armenia, Australia, Austria, Azores, Bahrain, Bangladesh, Belgium, Benin, Bermuda, Belarus, Bosnia-Herzegovina, Brazil, Brunei, Bulgaria, Chile, China, (People's, Rep.), Croatia, Cyprus, Montenegro, Czech, Republic, Denmark, Dominican, Republic, Egypt, Ecuador, Estonia, Philippines, Finland, France, France, Gibraltar, Greece, Georgia, Guatemala, Guinea, Spain, Netherlands, Honduras, India

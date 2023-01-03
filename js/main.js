@@ -110,36 +110,39 @@ function handleForm(event) {
 	let contactaddress = $('#contactaddress')
 	let contacttown = $('#contacttown')
 	let contactpostcode = $('#postcode')
-
-	showLoader()
-	$.ajax({
-		url: 'sendEmail.php',
-		method: 'POST',
-		dataType: 'json',
-		data: {
-			name: name.val(),
-			email: email.val(),
-			dw: dw.val(),
-			category: category.val(),
-			priority: priority.val(),
-			quality: qcpass.val(),
-			contact1: contactcompany.val(),
-			contact2: contactname.val(),
-			contact3: contactemail.val(),
-			contact4: contacttel.val(),
-			contact5: contactaddress.val(),
-			contact6: contacttown.val(),
-			contact7: contactpostcode.val(),
-			contact8: country.val(),
-			reviewer: revinfo.val(),
-			body: body,
-		},
-		success: function (response) {
-			hideLoader()
-			window.location.reload()
-			alert('Request sended')
-		},
-	})
+	if (form.checkValidity() && products.childElementCount > 0) {
+		showLoader()
+		$.ajax({
+			url: 'sendEmail.php',
+			method: 'POST',
+			dataType: 'json',
+			data: {
+				name: name.val(),
+				email: email.val(),
+				dw: dw.val(),
+				category: category.val(),
+				priority: priority.val(),
+				quality: qcpass.val(),
+				contact1: contactcompany.val(),
+				contact2: contactname.val(),
+				contact3: contactemail.val(),
+				contact4: contacttel.val(),
+				contact5: contactaddress.val(),
+				contact6: contacttown.val(),
+				contact7: contactpostcode.val(),
+				contact8: country.val(),
+				reviewer: revinfo.val(),
+				body: body,
+			},
+			success: function (response) {
+				hideLoader()
+				window.location.reload()
+				alert('Request sended')
+			},
+		})
+	} else {
+		check()
+	}
 }
 
 form.addEventListener('submit', handleForm)

@@ -95,50 +95,14 @@
                         <option value="Yes">Yes</option>
                     </select>
                 </div>
-            </div>
-            <div class="row mt-5 mx-auto">
-                <h3 class="p-0 border-bottom">PRODUCT LIST:</h3>
-                <table class="table table-striped table-hover mx-auto">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Catalog No.</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">X</th>
-                        </tr>
-                    </thead>
-                    <tbody id="productslist">
-                    </tbody>
-                </table>
-                <div class="row mx-auto mt-3">
-                    <label class="form-label p-0 border-bottom h5">Add products:</label>
-                    <div class="col-3 border-end p-0"><input class="form-control" value="" type="text" min="6" max="7"
-                            id="code" placeholder="Cat. no." spellcheck="false" maxlength="8" data-ms-editor="true"
-                            pattern="[A-Za-z]{3}[0-9]{4}|[A-Za-z]{2}[0-9][A-Za-z][0-9]{3}|[A-Za-z]{3}[0-9]{3}">
-                        <div class="example text-center">
-                            <p>EXAMPLES:<br>EY1B008 | SPG053 | KRX0048</p>
-                        </div>
-                    </div>
-
-                    <div class="col-6 border-end p-0""><input class=" form-control" type="text" id="productname"
-                        placeholder="Name" spellcheck="false" data-ms-editor="true"></div>
-                    <div class="col-3 border-end p-0""><input class=" form-control" type="number" id="quantity"
-                        placeholder="Quantity" spellcheck="false" data-ms-editor="true" min="1" maxlength="2"></div>
+                <div class="row mx-auto mt-3" id="reviewer" style="display: none;">
+                    <label for="reviewerinfo" class="form-label">
+                        <h3>About reviewer:</h3>
+                    </label>
+                    <textarea class="form-control" id="reviewerinfo" rows="1"
+                        placeholder="Youtube channel (link or name), website, comapny name etc."></textarea>
                 </div>
-                <div class="d-grid col-3 mx-auto m-3">
-                    <button type="button" class="btn btn-outline-secondary" onclick="addProduct();">Add Product</button>
-                </div>
-            </div>
-            <div class="row mx-auto mt-3" id="reviewer" style="display: none;">
-                <label for="reviewerinfo" class="form-label">
-                    <h3>About reviewer:</h3>
-                </label>
-                <textarea class="form-control" id="reviewerinfo" rows="1"
-                    placeholder="Youtube channel (link or name), website, comapny name etc."></textarea>
-            </div>
-            <div class="row mx-auto mt-3">
-                <h3 class="border-bottom">SHIPPING DETAILS:</h3>
+                <h3 class="border-bottom mt-3">SHIPPING DETAILS:</h3>
                 <div class="col-7 border-end">
                     <h3 class="border-bottom mt-2">Contact:</h3>
                     <label class="form-label mt-2">Company Name: (optional)</label>
@@ -165,13 +129,52 @@
                     <div id="example"></div>
                 </div>
             </div>
-            <div class="d-grid mx-auto col-2 m-3">
-                <button type="submit" id="submit-button" class="btn btn-outline-secondary" value="Send Request">Send
-                    Request</button>
-            </div>
         </form>
+        <div class="row mt-3 mx-auto">
+            <h3 class="p-0 border-bottom">PRODUCT LIST:</h3>
+            <table class="table table-striped table-hover mx-auto text-center">
+                <thead>
+                    <tr class="text">
+                        <th scope="col">#</th>
+                        <th scope="col">Catalog No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">X</th>
+                    </tr>
+                </thead>
+                <tbody id="productslist">
+                </tbody>
+            </table>
+            <form id="prodlist" class="was-validated row">
+                <label class="form-label p-0 border-bottom h5">Add products:</label>
+                <div class="col-3 border-end"><input class="form-control" value="" type="text" min="6" max="7" id="code"
+                        placeholder="Cat. no." spellcheck="false" maxlength="8" data-ms-editor="true"
+                        pattern="[A-Za-z]{3}[0-9]{4}|[A-Za-z]{2}[0-9][A-Za-z][0-9]{3}|[A-Za-z]{3}[0-9]{3}" required>
+                    <div class="example text-center">
+                        <p>EXAMPLES:<br>EY1B008 | SPG053 | KRX0048</p>
+                    </div>
+                </div>
+                <div class="col-6 border-end"><input class=" form-control" type="text" id="productname"
+                        placeholder="Name" spellcheck="false" data-ms-editor="true" maxlength="30" required></div>
+                <div class="col-3 border-end"><input class="form-control" type="number" id="quantity"
+                        placeholder="Quantity" spellcheck="false" data-ms-editor="true" min="1" max="99" maxlength="2"
+                        required>
+                </div>
+            </form>
+            <button type="submit" id="addprodbutton" form="prodlist"
+                class="btn btn-outline-secondary btn-sm d-grid mx-auto col-2 m-3">Add
+                Product</button>
+        </div>
     </div>
-    <br><br><br>
+    <div class="d-grid mx-auto col-2 m-3 text-center">
+        <button type="submit" id="submit-button" form="requestform" class="btn btn-outline-success btn-lg"
+            value="Send Request" disable>Send
+            Request</button>
+        <div id="formcomplete" class="mt-2"></div>
+    </div>
+    </form>
+    </div>
+    <br>
     <footer>
         <div class="copyright">
             <p>© All rights reserved | Created for internal use by COOLING sp. z o.o<br>Bartosz

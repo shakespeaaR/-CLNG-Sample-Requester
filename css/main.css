@@ -56,10 +56,6 @@ a:hover {
   font-size: 0.8rem;
 }
 
-input[type=text]:invalid {
-  border: 1px solid red;
-}
-
 .bgloader {
   display: none;
   position: fixed;

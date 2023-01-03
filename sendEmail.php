@@ -54,7 +54,7 @@
         <tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>TOWN:</strong></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contacttown</td></tr>
         <tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>POST / ZIP CODE</strong></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactpostcode</td></tr>
         <tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>STREET AND NO. OF HOUSE/LOCAL:</strong></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactaddress</td></tr></tbody></table><br>
-        <h3>About reviewer</h3><br><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><center>$revinfo</center></td>
+        <h3>About reviewer</h3><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><center>$revinfo</center></td>
         </center>");
         
         if ($mail->send()) {

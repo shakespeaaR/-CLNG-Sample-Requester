@@ -40,7 +40,7 @@ function addProduct(event) {
 	tr.appendChild(td)
 	td = document.createElement('td')
 	let button = document.createElement('button')
-	button.innerHTML = 'Usuń'
+	button.innerHTML = 'Remove'
 	button.className = 'btn btn-outline-danger btn-sm'
 	button.addEventListener('click', function () {
 		tbody.removeChild(tr)

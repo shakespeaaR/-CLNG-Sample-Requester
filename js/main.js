@@ -23,7 +23,6 @@ function addProduct(event) {
 	let code = $('#code')
 	let productname = $('#productname')
 	let quantity = $('#quantity')
-
 	let tbody = document.getElementById('productslist')
 	let tr = document.createElement('tr')
 	let td = document.createElement('td')

@@ -1,4 +1,5 @@
 let products = document.getElementById('productslist')
+let prodbg = document.getElementById('prodlistbg')
 let text = document.getElementById('formcomplete')
 let butsend = document.getElementById('submit-button')
 let form = document.getElementById('requestform')
@@ -9,23 +10,34 @@ let prodsubmit = document.getElementById('prodlist')
 function check() {
 	if (form.checkValidity() && products.childElementCount > 0) {
 		butsend.disabled = false
-		text.className = 'alert alert-success mt-2'
-		text.innerHTML = 'Finally! Form Complete. Now send it'
+		butsend.className = 'btn btn-success btn-lg'
 	} else {
 		butsend.disabled = true
-		text.className = 'alert alert-danger mt-2'
-		text.innerHTML = 'Form Incomplete'
+		butsend.className = 'btn btn-danger btn-lg'
 	}
 }
 
+// function countProducts() {
+// 	var table = document.getElementById('productslist')
+// 	var rows = table.getElementsByTagName('tr')
+// 	return rows.length
+// }
+
 function addProduct(event) {
 	event.preventDefault()
-	let code = $('#code')
-	let productname = $('#productname')
-	let quantity = $('#quantity')
+	let popup = document.getElementById('liveToast')
+	let popupdata = document.getElementById('toast-body')
+	let toast = new bootstrap.Toast(popup)
 	let tbody = document.getElementById('productslist')
 	let tr = document.createElement('tr')
 	let td = document.createElement('td')
+	popupdata.innerHTML =
+		'<strong>' +
+		document.getElementById('code').value +
+		' | ' +
+		document.getElementById('productname').value +
+		' | QTY: ' +
+		document.getElementById('quantity').value
 	td.innerHTML = tbody.children.length + 1
 	tr.appendChild(td)
 	td = document.createElement('td')
@@ -46,6 +58,7 @@ function addProduct(event) {
 		for (let i = 0; i < tbody.children.length; i++) {
 			tbody.children[i].children[0].innerHTML = i + 1
 		}
+		check()
 	})
 	td.appendChild(button)
 	tr.appendChild(td)
@@ -53,6 +66,7 @@ function addProduct(event) {
 	document.getElementById('code').value = ''
 	document.getElementById('productname').value = ''
 	document.getElementById('quantity').value = ''
+	toast.show()
 	check()
 }
 

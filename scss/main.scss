@@ -6,7 +6,12 @@
 
 body {
 	font-family: Lato, sans-serif;
-	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	max-width:1100px;
+	margin: auto;
 	opacity: 1;
 	background-color: #ececec;
 	text-transform: uppercase;
@@ -22,10 +27,6 @@ a {
 	transition: color 0.3s;
 }
 
-i {
-	font-size: 1.7rem;
-	padding-right: 10px;
-}
 
 a:hover {
 	color: #c9c9c9;
@@ -39,18 +40,29 @@ a:hover {
 	color: #ababab;
 	text-align: center;
 }
-.container {
-	z-index: 0;
-}
 
 .example {
 	font-size: 0.8rem;
 }
 
+.toast-container {
+	img {
+		width: 40px;
+	}
+}
+
+.toast {
+	position: fixed;
+	width: 450px;
+	bottom: 10px;
+	right: 10px;
+	z-index: 1;
+}
+
 .bgloader {
 	display: none;
 	position: fixed;
-	z-index: 20;
+	z-index: 1;
 	top: 0;
 	width: 100%;
 	height: 100%;
@@ -114,6 +126,11 @@ a:hover {
 	height: 64px;
 	border-color: #fff #fff transparent transparent;
 	animation: rotation 1.5s linear infinite;
+}
+
+.bgc-fail {
+	background-color: #dab81d;
+	color: #000;
 }
 
 @keyframes rotation {

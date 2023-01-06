@@ -9,7 +9,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
   max-width: 1100px;
   margin: auto;
   font-size: 15px;
@@ -28,6 +27,10 @@ body {
 
 ::placeholder {
   color: #c1c1c1;
+}
+
+p {
+  margin: 0;
 }
 
 a {
@@ -90,11 +93,6 @@ a:hover {
   color: #000000;
 }
 
-.box__title--gradient {
-  background: #ededed;
-  background: linear-gradient(0deg, #ededed 0%, #d6d6d6 100%);
-}
-
 .bgloader {
   display: none;
   position: fixed;
@@ -106,105 +104,106 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.5294117647);
 }
 
+.bgloader-insied {
+  margin: 10px;
+}
+
 .bgloader-box {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 600px;
-  height: 300px;
+  width: 300px;
+  height: 150px;
   border-radius: 5%;
   transform: translate(-50%, -50%);
-  background-color: rgba(185, 185, 185, 0.7490196078);
+  background: rgba(0, 0, 0, 0.583);
   color: #666;
 }
 
-.bgloader-inside {
+.box__loader {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-content: center;
-  margin-top: 100px;
+  position: fixed;
+  width: 20%;
+  height: 7%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4abdcf;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.box__loader--title {
+  display: flex;
+  justify-content: flex-start;
+  background: #4abdcf;
+  color: #000000;
+  margin-left: 5px;
+}
+.box__loader--title img {
+  width: 40px;
+}
+.box__loader--title p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .loader {
-  width: 96px;
-  height: 96px;
-  top: 50%;
-  left: 50%;
-  margin-left: 50px;
-  transform: translate(50%, 50%);
-  border-radius: 50%;
-  display: inline-block;
-  border: 7px solid;
-  border-color: #fff #fff transparent transparent;
-  box-sizing: border-box;
-  -webkit-animation: rotation 1s linear infinite;
-          animation: rotation 1s linear infinite;
-}
-
-.loader::after,
-.loader::before {
-  content: "";
-  box-sizing: border-box;
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  border: 7px solid;
-  border-color: transparent transparent #666666 #666666;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  box-sizing: border-box;
-  -webkit-animation: rotationBack 0.5s linear infinite;
-          animation: rotationBack 0.5s linear infinite;
-  transform-origin: center center;
+  right: 15px;
+  margin: 0px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10%;
+  border: 6.8px solid #fff;
+  -webkit-animation: spinner-kk2y8v 3s infinite;
+          animation: spinner-kk2y8v 3s infinite;
 }
 
-.loader::before {
-  width: 64px;
-  height: 64px;
-  border-color: #fff #fff transparent transparent;
-  -webkit-animation: rotation 1.5s linear infinite;
-          animation: rotation 1.5s linear infinite;
-}
-
-.bgc-fail {
-  background-color: #dab81d;
-  color: #000;
-}
-
-@-webkit-keyframes rotation {
+@-webkit-keyframes spinner-kk2y8v {
   0% {
     transform: rotate(0deg);
   }
-  100% {
-    transform: rotate(360deg);
+  10%, 15% {
+    transform: rotate(-90deg);
   }
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
+  20%, 25% {
+    transform: rotate(-180deg);
   }
-  100% {
-    transform: rotate(360deg);
+  30%, 35% {
+    transform: rotate(-90deg);
   }
-}
-@-webkit-keyframes rotationBack {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
+  40%, 50% {
     transform: rotate(-360deg);
   }
+  100% {
+    transform: rotate(1080deg);
+  }
 }
-@keyframes rotationBack {
+
+@keyframes spinner-kk2y8v {
   0% {
     transform: rotate(0deg);
   }
-  100% {
+  10%, 15% {
+    transform: rotate(-90deg);
+  }
+  20%, 25% {
+    transform: rotate(-180deg);
+  }
+  30%, 35% {
+    transform: rotate(-90deg);
+  }
+  40%, 50% {
     transform: rotate(-360deg);
+  }
+  100% {
+    transform: rotate(1080deg);
   }
 }/*# sourceMappingURL=main.css.map */

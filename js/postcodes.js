@@ -558,7 +558,7 @@ document.body.appendChild(example)
 function showExample() {
 	let country = document.getElementById('country').value
 	let example = postCodePatterns[country].example
-	document.getElementById('example').innerHTML = 'post code example: ' + example
+	document.getElementById('example').innerHTML = 'post/ zip code example: ' + '<strong>' + example + '</strong>'
 }
 document.getElementById('country').addEventListener('change', showExample)
 showExample()

@@ -44,8 +44,8 @@
 
         //Conternt
         $mail->isHTML(true);
-        $mail->Subject = ("Sample Request: $category -> $priority -> QC: $quality -> $name -> $date");
-        $mail->Body = ("<center><h2>Sample Request: $category -> $priority -> QC: $quality -> $name -> $date</h2><br><h3>PRODUCT LIST:</h3><br>$body<br><br><h3>SHIPPING DETAILS:</h3><br><table style='border-collapse: collapse;border-color:#ccc;border-spacing:0;'><thead>
+        $mail->Subject = ("Sample Request: $category -> $priority -> QC: $quality -> $contactsurname -> $date from: $name");
+        $mail->Body = ("<center><h2>Sample Request: $category -> $priority -> QC: $quality -> $contactsurname -> $date from: $name</h2><br><h3>PRODUCT LIST:</h3><br>$body<br><br><h3>SHIPPING DETAILS:</h3><br><table style='border-collapse: collapse;border-color:#ccc;border-spacing:0;'><thead>
         <tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>COMPANY NAME:</strong></b></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactcom</td></tr></thead>
         <tbody><tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>NAME, SURNAME:</strong></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactsurname</td></tr>
         <tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>EMAIL ADDRESS:</strong></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactmail</td></tr>

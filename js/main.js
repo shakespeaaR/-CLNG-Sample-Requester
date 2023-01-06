@@ -5,7 +5,37 @@ let butsend = document.getElementById('submit-button')
 let form = document.getElementById('requestform')
 let selectList = document.getElementById('category')
 let textArea = document.getElementById('reviewer')
+let textAreainput = document.getElementById('reviewerinfo')
 let prodsubmit = document.getElementById('prodlist')
+let addCCbutton = document.getElementById('addCC')
+let maillimit = 0
+
+function ccEmails() {
+	let ccdw = document.getElementById('ccbody')
+	let inputs = ccdw.getElementsByTagName('input')
+	var text2 = ''
+	for (var i = 0; i < inputs.length; i++) {
+		text2 += '"' + inputs[i].value + '",'
+	}
+	return text2
+}
+
+function addCCmail() {
+	let ccBody = document.getElementById('ccbody')
+	var emailInput = document.createElement('input')
+	emailInput.id = 'dw'
+	emailInput.className = 'form-control mt-1'
+	emailInput.placeholder = 'Enter Email'
+	emailInput.setAttribute('type', 'email')
+	emailInput.setAttribute('pattern', '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$')
+	if (maillimit < 2) {
+		ccBody.appendChild(emailInput)
+		maillimit++
+	} else {
+		alert('CC Limit Reached (MAX 3)')
+		return false
+	}
+}
 
 function check() {
 	if (form.checkValidity() && products.childElementCount > 0) {
@@ -16,12 +46,6 @@ function check() {
 		butsend.className = 'btn btn-danger btn-lg'
 	}
 }
-
-// function countProducts() {
-// 	var table = document.getElementById('productslist')
-// 	var rows = table.getElementsByTagName('tr')
-// 	return rows.length
-// }
 
 function addProduct(event) {
 	event.preventDefault()
@@ -158,13 +182,16 @@ function handleForm(event) {
 	}
 }
 
+// addCCbutton.addEventListener('click', addCCmail)
 form.addEventListener('submit', handleForm)
 prodsubmit.addEventListener('submit', addProduct)
 selectList.addEventListener('change', function () {
 	if (selectList.value === 'Review') {
 		textArea.style.display = 'block'
+		textAreainput.required = true
 	} else {
 		textArea.style.display = 'none'
+		textAreainput.required = false
 	}
 })
 

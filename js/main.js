@@ -104,7 +104,6 @@ function hideLoader() {
 	loader.style.display = 'none'
 }
 
-//complete form func
 form.addEventListener('input', function () {
 	check()
 })
@@ -120,9 +119,10 @@ function handleForm(event) {
 		let result = ''
 		let tbody = document.getElementById('productslist')
 		result +=
-			'<table style="border-collapse: collapse;border-color:#ccc;border-spacing:0;"><thead><tr><th style="border: 1px solid #000;padding: 10px 15px;text-align: center;">#</th><th style="border: 1px solid #000;padding: 10px 15px;text-align: center;">Nr. Kat.</th><th style="border: 1px solid #000;padding: 10px 15px;text-align: center;">Nazwa</th><th style="border: 1px solid #000;padding: 10px 15px;text-align: center;">Ilość</th></tr></thead><tbody>'
+			'<table style="border-collapse: collapse;border-color:#ccc;border-spacing:0;"><thead><tr><th style="border: 1px solid #000;padding: 10px 15px;text-align: center;">#</th><th style="border: 1px solid #000;padding: 10px 15px;text-align: center;">Cat. No.</th><th style="border: 1px solid #000;padding: 10px 15px;text-align: center;">Name</th><th style="border: 1px solid #000;padding: 10px 15px;text-align: center;">QTY:</th></tr></thead><tbody>'
 		for (let i = 0; i < tbody.children.length; i++) {
-			result += '<tr><td style="border: 1px solid #000;padding: 10px 15px;text-align: center;">'
+			result +=
+				'<tr style="text-transform:uppercase"><td style="border: 1px solid #000;padding: 10px 15px;text-align: center;">'
 			result +=
 				tbody.children[i].children[0].innerHTML +
 				'</td><td style="border: 1px solid #000;padding: 10px 15px;text-align: center;">'
@@ -147,6 +147,7 @@ function handleForm(event) {
 	let contactaddress = $('#contactaddress')
 	let contacttown = $('#contacttown')
 	let contactpostcode = $('#postcode')
+	let comment = $('#comment')
 	if (form.checkValidity() && products.childElementCount > 0) {
 		showLoader()
 		$.ajax({
@@ -170,6 +171,7 @@ function handleForm(event) {
 				contact8: country.val(),
 				reviewer: revinfo.val(),
 				body: body,
+				comment: comment.val(),
 			},
 			success: function (response) {
 				hideLoader()

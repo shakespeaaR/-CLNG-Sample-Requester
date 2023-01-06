@@ -18,6 +18,7 @@
         $contactpostcode =  $_POST['contact7'];
         $contactcountry = $_POST['contact8'];
         $revinfo = $_POST['reviewer'];
+        $comment = $_POST['comment'];
         $date = date('d.m.Y');        
 
         require_once "PHPMailer/PHPMailer.php";
@@ -45,17 +46,92 @@
         //Conternt
         $mail->isHTML(true);
         $mail->Subject = ("Sample Request: $category -> $priority -> QC: $quality -> $contactsurname -> $date from: $name");
-        $mail->Body = ("<center><h2>Sample Request: $category -> $priority -> QC: $quality -> $contactsurname -> $date from: $name</h2><br><h3>PRODUCT LIST:</h3><br>$body<br><br><h3>SHIPPING DETAILS:</h3><br><table style='border-collapse: collapse;border-color:#ccc;border-spacing:0;'><thead>
-        <tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>COMPANY NAME:</strong></b></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactcom</td></tr></thead>
-        <tbody><tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>NAME, SURNAME:</strong></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactsurname</td></tr>
-        <tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>EMAIL ADDRESS:</strong></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactmail</td></tr>
-        <tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>PHONE NUMBER:</strong></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contacttel</td></tr>
-        <tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>COUNTRY:</strong></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactcountry</td></tr>
-        <tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>TOWN:</strong></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contacttown</td></tr>
-        <tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>POST / ZIP CODE</strong></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactpostcode</td></tr>
-        <tr><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>STREET AND NO. OF HOUSE/LOCAL:</strong></td><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactaddress</td></tr></tbody></table><br>
-        <h3>About reviewer</h3><td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><center>$revinfo</center></td>
-        </center>");
+        $mail->Body = ("<center style='font-family:Verdana, Geneva, Tahoma, sans-serif'>
+        <h1 style='text-transform:uppercase'>SAMPLE REQUEST</h1>
+        <h2 style='text-transform:uppercase'>Sample Request: $category -> $priority -> QC: $quality -> $contactsurname
+            -> $date from: $name</h2>
+        <h3 style='text-transform:uppercase'>PRODUCT LIST:</h3>$body<br>
+        <h3>SHIPPING DETAILS:</h3><br>
+        <table style='border-collapse: collapse;border-color:#ccc;border-spacing:0; text-transform:uppercase;'>
+            <thead>
+                <tr>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>COMPANY
+                            NAME:</strong></b></td>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactcom</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>NAME,
+                            SURNAME:</strong></td>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactsurname</td>
+                </tr>
+                <tr>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>EMAIL
+                            ADDRESS:</strong></td>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactmail</td>
+                </tr>
+                <tr>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>PHONE
+                            NUMBER:</strong>
+                    </td>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contacttel</td>
+                </tr>
+                <tr>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>COUNTRY:</strong>
+                    </td>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactcountry</td>
+                </tr>
+                <tr>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>TOWN:</strong>
+                    </td>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contacttown</td>
+                </tr>
+                <tr>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>POST / ZIP
+                            CODE</strong></td>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactpostcode
+                    </td>
+                </tr>
+                <tr>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>STREET AND NO. OF
+                            HOUSE/LOCAL:</strong></td>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>&nbsp;$contactaddress</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table style='border-collapse: collapse;border-color:#ccc;border-spacing:0;'>
+            <thead>
+                <tr>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>ABOUT
+                            REVIWER:</strong></b></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>$revinfo</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table style='border-collapse: collapse;border-color:#ccc;border-spacing:0;'>
+            <thead>
+                <tr>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>
+                        <strong>COMMENT:</strong></b>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>$comment</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>");
         
         if ($mail->send()) {
             $status = "success";

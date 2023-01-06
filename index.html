@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -27,11 +27,12 @@
     <div class="toast-container">
         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="box p-2">
-                <div class="box__title rounded d-flex align-items-center text-center">
-                    <img src="./img/coolinglogo.png" class="rounded m-2 bg-body" alt="Cooling.pl Logo">
+                <div class="box__title rounded-3 d-flex align-items-center text-center">
+                    <img src="./img/coolinglogo.png" class="rounded bg-body" alt="Cooling Logo">
                     <strong class="mx-auto">Sample Request: Product Added</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
-                <div class="toast-body text-center m-2" id="toast-body"></div>
+                <div class="toast-body text-center" id="toast-body"></div>
             </div>
         </div>
     </div>
@@ -44,50 +45,50 @@
                 <h1>Sample Requster</h1>
             </div>
         </div>
-        <form id="requestform" class="row was-validated">
-            <h3>Zlecający:</h3>
-            <div class="col mt-3" id="principalbg">
-                <div class="box p-2">
-                    <div class="box__title rounded">
-                        <h3 class="mt-2">Principal:</h3>
+        <form id="requestform" class="was-validated">
+            <div class="row">
+                <div class="col-6 mt-3" id="principalbg">
+                    <div class="box p-2">
+                        <div class="box__title rounded">
+                            <h3 class="mt-2">Principal:</h3>
+                        </div>
+                        <label class="form-label mt-2">Principal (name, surname):</label>
+                        <input id="name" class="form-control" type="text" placeholder="Principal" required>
+                        <label class="form-label mt-2 mt-2">Email:</label>
+                        <input id="email" class="form-control" type="email"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email" required>
+                        <label class="form-label mt-2 mt-2">CC: (optional)</label>
+                        <div id="ccbody"><input id="dw" class="form-control" type="email"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email"></div>
+                        <!-- <button type="button" id="addCC" class="btn btn-secondary btn-sm mx-auto m-1">Add CC</button> -->
                     </div>
-                    <label class="form-label mt-2">Principal (name, surname):</label>
-                    <input id="name" class="form-control" type="text" placeholder="Principal" required>
-                    <label class="form-label mt-2 mt-2">Email:</label>
-                    <input id="email" class="form-control" type="email"
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email" required>
-                    <label class="form-label mt-2 mt-2">CC:</label>
-                    <div id="ccbody"><input id="dw" class="form-control" type="email"
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email"></div>
-                    <!-- <button type="button" id="addCC" class="btn btn-secondary btn-sm mx-auto m-1">Add CC</button> -->
+                </div>
+                <div class="col-6 mt-3" id="categorybg">
+                    <div class="box p-2">
+                        <div class="box__title rounded">
+                            <h3 class="mt-2">Shipping:</h3>
+                        </div>
+                        <label class="form-label mt-2">Category:</label>
+                        <select name="category" id="category" class="form-select">
+                            <option selected="Uncategorized">Uncategorized</option>
+                            <option value="Barter">Barter</option>
+                            <option value="Competition">Competition</option>
+                            <option value="Review">Review</option>
+                        </select>
+                        <label class="form-label mt-2 mt-2">Priority:</label>
+                        <select name="priority" id="priority" class="form-select">
+                            <option value="Normal">Normal</option>
+                            <option value="Important">Important</option>
+                        </select>
+                        <label class="form-label mt-2 mt-2">Quality Check:</label>
+                        <select name="qc" id="qc" class="form-select">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-
-            <div class="col mt-3" id="categorybg">
-                <div class="box p-2">
-                    <div class="box__title rounded">
-                        <h3 class="mt-2">Shipping:</h3>
-                    </div>
-                    <label class="form-label mt-2">Category:</label>
-                    <select name="category" id="category" class="form-select">
-                        <option selected="Uncategorized">Uncategorized</option>
-                        <option value="Barter">Barter</option>
-                        <option value="Competition">Competition</option>
-                        <option value="Review">Review</option>
-                    </select>
-                    <label class="form-label mt-2 mt-2">Priority:</label>
-                    <select name="priority" id="priority" class="form-select">
-                        <option value="Normal">Normal</option>
-                        <option value="Important">Important</option>
-                    </select>
-                    <label class="form-label mt-2 mt-2">Quality Check:</label>
-                    <select name="qc" id="qc" class="form-select">
-                        <option value="No">No</option>
-                        <option value="Yes">Yes</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mx-auto mt-3 p-2" id="reviewer" style="display: none;">
+            <div class="row mt-3 p-2" id="reviewer" style="display: none;">
                 <div class="box p-2">
                     <div class="box__title rounded">
                         <h3 class="mt-2">About reviewer:</h3>
@@ -97,36 +98,37 @@
                         placeholder="Youtube channel (link or name), website, comapny name etc."></textarea>
                 </div>
             </div>
-            <h3 class="mt-3">SHIPPING DETAILS:</h3>
-            <div class="col-6 p-2 mt-3" id="contactbg">
-                <div class="box p-2">
-                    <div class="box__title rounded">
-                        <h3 class="mt-2"></i>Contact:</h3>
-                    </div><label class="form-label mt-2">Company Name: (optional)</label>
-                    <input id="contactcompany" class="form-control" type="text" placeholder="Company Name:">
-                    <label class="form-label mt-2">Name, Surname:</label>
-                    <input id="contactname" class="form-control" type="text" placeholder="Name, Surname" required>
-                    <label class="form-label mt-2">Email Address:</label>
-                    <input id="contactemail" class="form-control" type="email"
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email Address">
-                    <label class="form-label mt-2">Phone Number</label>
-                    <input id="contacttel" class="form-control" type="tel" placeholder="Phone Number" required>
-                </div>
-            </div>
-            <div class="col-6 p-2 mt-3" id="shipbg">
-                <div class="box p-2">
-                    <div class="box__title rounded">
-                        <h3 class="mt-2"></i>SHIPPING ADDRESS:</h3>
+            <div class="row">
+                <div class="col-6 p-2 mt-4" id="contactbg">
+                    <div class="box p-2">
+                        <div class="box__title rounded">
+                            <h3 class="mt-2">Contact:</h3>
+                        </div><label class="form-label mt-2">Company Name: (optional)</label>
+                        <input id="contactcompany" class="form-control" type="text" placeholder="Company Name:">
+                        <label class="form-label mt-2">Name, Surname:</label>
+                        <input id="contactname" class="form-control" type="text" placeholder="Name, Surname" required>
+                        <label class="form-label mt-2">Email Address: (optional)</label>
+                        <input id="contactemail" class="form-control" type="email"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Email Address">
+                        <label class="form-label mt-2">Phone Number:</label>
+                        <input id="contacttel" class="form-control" type="tel" placeholder="Phone Number" required>
                     </div>
-                    <label class="form-label mt-2">Country:</label>
-                    <div id="countryselector"></div>
-                    <label class="form-label mt-2">Street and No. of house/local:</label>
-                    <input id="contactaddress" class="form-control" type="text"
-                        placeholder="Street and No. of house/local:" required>
-                    <label class="form-label mt-2">Town:</label>
-                    <input id="contacttown" class="form-control" type="text" placeholder="Town" required>
-                    <label class="form-label mt-2" id="example">Post / Zip Code </label>
-                    <input id="postcode" class="form-control" type="text" placeholder="Post / Zip Code" required>
+                </div>
+                <div class="col-6 p-2 mt-4" id="shipbg">
+                    <div class="box p-2">
+                        <div class="box__title rounded">
+                            <h3 class="mt-2">SHIPPING ADDRESS:</h3>
+                        </div>
+                        <label class="form-label mt-2">Country:</label>
+                        <div id="countryselector"></div>
+                        <label class="form-label mt-2">Street and No. of house/local:</label>
+                        <input id="contactaddress" class="form-control" type="text"
+                            placeholder="Street and No. of house/local:" required>
+                        <label class="form-label mt-2">Town:</label>
+                        <input id="contacttown" class="form-control" type="text" placeholder="Town" required>
+                        <label class="form-label mt-2" id="example">Post / Zip Code </label>
+                        <input id="postcode" class="form-control" type="text" placeholder="Post / Zip Code" required>
+                    </div>
                 </div>
             </div>
         </form>
@@ -148,41 +150,53 @@
                     <tbody id="productslist">
                     </tbody>
                 </table>
-                <form id="prodlist" class="was-validated row">
-                    <label class="form-label h5">Add products:</label>
-                    <div class="col-3 "><input class="form-control" value="" type="text" min="6" max="7" id="code"
-                            placeholder="Cat. no." spellcheck="false" maxlength="8" data-ms-editor="true"
-                            pattern="[A-Za-z]{3}[0-9]{4}|[A-Za-z]{2}[0-9][A-Za-z][0-9]{3}|[A-Za-z]{3}[0-9]{3}" required>
-                        <div class="example text-center">
-                            <p>EXAMPLES:<br>EY1B008 | SPG053 | KRX0048</p>
+                <form id="prodlist" class="was-validated">
+                    <div class="row"><label class="form-label h5">Add products:</label>
+                        <div class="col-3">
+                            <input class="form-control" value="" type="text" min="6" max="7" id="code"
+                                placeholder="Cat. no." spellcheck="false" maxlength="8" data-ms-editor="true"
+                                pattern="[A-Za-z]{3}[0-9]{4}|[A-Za-z]{2}[0-9][A-Za-z][0-9]{3}|[A-Za-z]{3}[0-9]{3}"
+                                required>
+                            <div class="example text-center">
+                                <p>EXAMPLES:<br>EY1B008 | SPG053 | KRX0048</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6 "><input class=" form-control" type="text" id="productname" placeholder="Name"
-                            spellcheck="false" data-ms-editor="true" maxlength="30" required></div>
-                    <div class="col-3 "><input class="form-control" type="number" id="quantity" placeholder="Quantity"
-                            spellcheck="false" data-ms-editor="true" min="1" max="99" maxlength="2" required>
+                        <div class="col-6 "><input class=" form-control" type="text" id="productname" placeholder="Name"
+                                spellcheck="false" data-ms-editor="true" maxlength="30" required></div>
+                        <div class="col-3 "><input class="form-control" type="number" id="quantity"
+                                placeholder="Quantity" spellcheck="false" data-ms-editor="true" min="1" max="99"
+                                maxlength="2" required>
+                        </div>
                     </div>
                 </form>
                 <button type="submit" id="addprodbutton" form="prodlist"
                     class="btn btn-secondary btn-sm d-grid mx-auto col-2 m-3 shadow-lg--sm">Add Product</button>
             </div>
+            <div class="box rounded-0 p-2">
+                <label for="comment" class="form-label">Comment:</label>
+                <textarea class="form-control" id="comment" rows="3" cols="100" placeholder="Comment..."
+                    maxlength="200"></textarea>
+            </div>
         </div>
-        <div class="mt-3 text-center">
+        <div class="mt-2 text-center">
             <button type="submit" id="submit-button" form="requestform" class="btn btn-success btn-lg"
                 value="Send Request">Send
                 Request</button>
         </div>
     </div>
     <footer>
-        <div class="copyright">
+        <div class="copyright mt-2">
             <p>© All rights reserved | Created for internal use by COOLING sp. z o.o<br>Bartosz
                 Szymański</p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
-    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
     <script src="/js/main.js"></script>
     <script src="/js/postcodes.js"></script>
     <script src="/js/popups.js"></script>

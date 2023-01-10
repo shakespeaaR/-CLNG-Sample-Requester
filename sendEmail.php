@@ -32,13 +32,13 @@
         $mail->Host = "mail.shakespear.xaa.pl";
         $mail->SMTPAuth = true;
         $mail->Username = "mailer@shakespear.xaa.pl"; //enter you email address
-        $mail->Password = 'JiFPZ6hpkics'; //enter you email password
+        $mail->Password = ';qt(w!$V?45l'; //enter you email password
         $mail->Port = 465;
         $mail->SMTPSecure = "ssl";
 
         //Email Settings
         $mail->setFrom($email, "Sample Request");
-        $mail->addAddress("bartosz_szymanski@outlook.com"); //enter you email address
+        $mail->addAddress("mailer@shakespear.xaa.pl"); //enter you email address
         $mail->addReplyTo($email, $name);
         $mail->addCC($email);
         $mail->addCC($dw);

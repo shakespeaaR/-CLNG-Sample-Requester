@@ -8,21 +8,37 @@ let textArea = document.getElementById('reviewer')
 let textAreainput = document.getElementById('reviewerinfo')
 let prodsubmit = document.getElementById('prodlist')
 let addCCbutton = document.getElementById('addCC')
+let cleartprodlistbtn = document.getElementById('clrbutton')
+let clearformbtn = document.getElementById('clear-form')
 let maillimit = 0
 
 function ccEmails() {
 	let ccdw = document.getElementById('ccbody')
 	let inputs = ccdw.getElementsByTagName('input')
-	var text2 = ''
-	for (var i = 0; i < inputs.length; i++) {
+	let text2 = ''
+	for (let i = 0; i < inputs.length; i++) {
 		text2 += '"' + inputs[i].value + '",'
 	}
 	return text2
 }
 
+function clearProdListFields() {
+	let inputs = prodlist.getElementsByTagName('input')
+	for (let i = 0; i < inputs.length; i++) {
+		inputs[i].value = ''
+	}
+}
+
+function clearFormFields() {
+	let inputs = form.getElementsByTagName('input')
+	for (let i = 0; i < inputs.length; i++) {
+		inputs[i].value = ''
+	}
+}
+
 function addCCmail() {
 	let ccBody = document.getElementById('ccbody')
-	var emailInput = document.createElement('input')
+	let emailInput = document.createElement('input')
 	emailInput.id = 'dw'
 	emailInput.className = 'form-control mt-1'
 	emailInput.placeholder = 'Enter Email'
@@ -175,8 +191,10 @@ function handleForm(event) {
 			},
 			success: function (response) {
 				hideLoader()
+				clearFormFields()
 				window.location.reload()
-				alert('Request sended')
+				console.log(response)
+				alert(response)
 			},
 		})
 	} else {
@@ -187,6 +205,8 @@ function handleForm(event) {
 // addCCbutton.addEventListener('click', addCCmail)
 form.addEventListener('submit', handleForm)
 prodsubmit.addEventListener('submit', addProduct)
+cleartprodlistbtn.addEventListener('click', clearProdListFields)
+clearformbtn.addEventListener('click', clearFormFields)
 selectList.addEventListener('change', function () {
 	if (selectList.value === 'Review') {
 		textArea.style.display = 'block'

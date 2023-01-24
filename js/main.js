@@ -100,6 +100,7 @@ function check() {
 }
 
 function addProduct(event) {
+	checktable()
 	event.preventDefault()
 	let tbody = document.getElementById('productslist')
 	let tr = document.createElement('tr')
@@ -132,6 +133,7 @@ function addProduct(event) {
 			tbody.children[i].children[0].innerHTML = i + 1
 		}
 		check()
+		checktable()
 	})
 	td.appendChild(button)
 	tr.appendChild(td)
@@ -141,6 +143,21 @@ function addProduct(event) {
 	document.getElementById('quantity').value = ''
 	toast.show()
 	check()
+}
+
+function checktable() {
+	if (products.rows.length == 0) {
+		var row = products.insertRow(0)
+		var cell1 = row.insertCell(0)
+		cell1.innerHTML = 'No products'
+		cell1.setAttribute('colspan', '5')
+	} else {
+		var row = products.rows[0]
+		var cell1 = row.cells[0]
+		if (cell1.innerHTML == 'No products') {
+			products.deleteRow(0)
+		}
+	}
 }
 
 function showLoader() {
@@ -252,6 +269,7 @@ prodsubmit.addEventListener('submit', addProduct)
 cleartprodlistbtn.addEventListener('click', clearProdListFields)
 clearformbtn.addEventListener('click', clearFormFields)
 document.addEventListener('change', copyContactData)
+products.addEventListener('change', checktable)
 selectList.addEventListener('change', function () {
 	if (selectList.value === 'Review') {
 		textArea.style.display = 'block'
@@ -262,4 +280,5 @@ selectList.addEventListener('change', function () {
 	}
 })
 copyContactData()
+checktable()
 check()

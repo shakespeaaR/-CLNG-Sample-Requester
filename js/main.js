@@ -10,17 +10,19 @@ let prodsubmit = document.getElementById('prodlist')
 let addCCbutton = document.getElementById('addCC')
 let cleartprodlistbtn = document.getElementById('clrbutton')
 let clearformbtn = document.getElementById('clear-form')
-let maillimit = 0
-
-function ccEmails() {
-	let ccdw = document.getElementById('ccbody')
-	let inputs = ccdw.getElementsByTagName('input')
-	let text2 = ''
-	for (let i = 0; i < inputs.length; i++) {
-		text2 += '"' + inputs[i].value + '",'
-	}
-	return text2
-}
+let popup = document.getElementById('liveToast')
+let popupdata = document.getElementById('toast-body')
+let toast = new bootstrap.Toast(popup)
+let checkbox = document.getElementById('contactdata')
+let contactdatacompany = document.getElementById('contactdatacompany')
+let contactdataname = document.getElementById('contactdataname')
+let contactdataemail = document.getElementById('contactdataemail')
+let contactdatatel = document.getElementById('contactdatatel')
+let contactcompany = document.getElementById('contactcompany')
+let contactname = document.getElementById('contactname')
+let contactemail = document.getElementById('contactemail')
+let contacttel = document.getElementById('contacttel')
+let recipient = document.getElementById('recipientident')
 
 function clearProdListFields() {
 	let inputs = prodlist.getElementsByTagName('input')
@@ -29,28 +31,62 @@ function clearProdListFields() {
 	}
 }
 
+function copyContactDataCheckbox() {
+	//recipient
+	let contactdatacompany = document.getElementById('contactdatacompany')
+	let contactdataname = document.getElementById('contactdataname')
+	let contactdataemail = document.getElementById('contactdataemail')
+	let contactdatatel = document.getElementById('contactdatatel')
+	//contact
+	let contactcompany = document.getElementById('contactcompany')
+	let contactname = document.getElementById('contactname')
+	let contactemail = document.getElementById('contactemail')
+	let contacttel = document.getElementById('contacttel')
+	if (checkbox.checked) {
+		contactcompany.disabled = true
+		contactname.disabled = true
+		contactemail.disabled = true
+		contacttel.disabled = true
+		contactcompany.value = contactdatacompany.value
+		contactname.value = contactdataname.value
+		contactemail.value = contactdataemail.value
+		contacttel.value = contactdatatel.value
+	} else {
+		contactcompany.disabled = false
+		contactname.disabled = false
+		contactemail.disabled = false
+		contacttel.disabled = false
+		contactcompany.value = ''
+		contactname.value = ''
+		contactemail.value = ''
+		contacttel.value = ''
+	}
+}
+
+function copyContactData() {
+	if (checkbox.checked) {
+		contactcompany.disabled = true
+		contactname.disabled = true
+		contactemail.disabled = true
+		contacttel.disabled = true
+		contactcompany.value = contactdatacompany.value
+		contactname.value = contactdataname.value
+		contactemail.value = contactdataemail.value
+		contacttel.value = contactdatatel.value
+	} else {
+		contactcompany.disabled = false
+		contactname.disabled = false
+		contactemail.disabled = false
+		contacttel.disabled = false
+	}
+}
+
 function clearFormFields() {
 	let inputs = form.getElementsByTagName('input')
 	for (let i = 0; i < inputs.length; i++) {
 		inputs[i].value = ''
 	}
-}
-
-function addCCmail() {
-	let ccBody = document.getElementById('ccbody')
-	let emailInput = document.createElement('input')
-	emailInput.id = 'dw'
-	emailInput.className = 'form-control mt-1'
-	emailInput.placeholder = 'Enter Email'
-	emailInput.setAttribute('type', 'email')
-	emailInput.setAttribute('pattern', '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$')
-	if (maillimit < 2) {
-		ccBody.appendChild(emailInput)
-		maillimit++
-	} else {
-		alert('CC Limit Reached (MAX 3)')
-		return false
-	}
+	clearProdListFields()
 }
 
 function check() {
@@ -59,15 +95,12 @@ function check() {
 		butsend.className = 'btn btn-success btn-lg'
 	} else {
 		butsend.disabled = true
-		butsend.className = 'btn btn-danger btn-lg'
+		butsend.className = 'btn btn-secondary btn-lg'
 	}
 }
 
 function addProduct(event) {
 	event.preventDefault()
-	let popup = document.getElementById('liveToast')
-	let popupdata = document.getElementById('toast-body')
-	let toast = new bootstrap.Toast(popup)
 	let tbody = document.getElementById('productslist')
 	let tr = document.createElement('tr')
 	let td = document.createElement('td')
@@ -164,6 +197,11 @@ function handleForm(event) {
 	let contacttown = $('#contacttown')
 	let contactpostcode = $('#postcode')
 	let comment = $('#comment')
+	let contactdatacompany = $('#contactdatacompany')
+	let contactdataname = $('#contactdataname')
+	let contactdataemail = $('#contactdataemail')
+	let contactdatatel = $('#contactdatatel')
+	let recipient = $('#recipientident')
 	if (form.checkValidity() && products.childElementCount > 0) {
 		showLoader()
 		$.ajax({
@@ -177,6 +215,10 @@ function handleForm(event) {
 				category: category.val(),
 				priority: priority.val(),
 				quality: qcpass.val(),
+				contactdata1: contactdatacompany.val(),
+				contactdata2: contactdataname.val(),
+				contactdata3: contactdataemail.val(),
+				contactdata4: contactdatatel.val(),
 				contact1: contactcompany.val(),
 				contact2: contactname.val(),
 				contact3: contactemail.val(),
@@ -188,6 +230,7 @@ function handleForm(event) {
 				reviewer: revinfo.val(),
 				body: body,
 				comment: comment.val(),
+				recip: recipient.val(),
 			},
 			success: function (response) {
 				hideLoader()
@@ -203,10 +246,12 @@ function handleForm(event) {
 }
 
 // addCCbutton.addEventListener('click', addCCmail)
+checkbox.addEventListener('click', copyContactDataCheckbox)
 form.addEventListener('submit', handleForm)
 prodsubmit.addEventListener('submit', addProduct)
 cleartprodlistbtn.addEventListener('click', clearProdListFields)
 clearformbtn.addEventListener('click', clearFormFields)
+document.addEventListener('change', copyContactData)
 selectList.addEventListener('change', function () {
 	if (selectList.value === 'Review') {
 		textArea.style.display = 'block'
@@ -216,5 +261,5 @@ selectList.addEventListener('change', function () {
 		textAreainput.required = false
 	}
 })
-
+copyContactData()
 check()

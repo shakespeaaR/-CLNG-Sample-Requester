@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Requster</title>
+    <title>Sample Request</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
@@ -67,7 +67,7 @@
                         <div class="box__title rounded">
                             <h3 class="mt-2">Requested by:</h3>
                         </div>
-                        <label class="form-label mt-2">Orderer:</label>
+                        <label class="form-label mt-2">Name:</label>
                         <input id="name" class="form-control" type="text" placeholder="Orderer" required>
                         <label class="form-label mt-2 mt-2">Email:</label>
                         <input id="email" class="form-control" type="email"
@@ -174,7 +174,7 @@
                         <div id="countryselector"></div>
                         <label class="form-label mt-2">Street, building and apartment number:</label>
                         <input id="contactaddress" class="form-control" type="text"
-                            placeholder="Street and No. of house/local:" required>
+                            placeholder="Street, building and apartment number" required>
                         <label class="form-label mt-2">City:</label>
                         <input id="contacttown" class="form-control" type="text" placeholder="Town" required>
                         <label class="form-label mt-2" id="example">Post code: </label>
@@ -203,7 +203,7 @@
                 </table>
                 <form id="prodlist" class="was-validated">
                     <div class="row addprod">
-                        <label class="form-label h5">Add products:</label>
+                        <label class="form-label h5 mt-3">Add products:</label>
                         <div class="col-3">
                             <input class="form-control" value="" type="text" min="6" max="7" id="code"
                                 placeholder="Cat. no." spellcheck="false" maxlength="8" data-ms-editor="true"
@@ -220,7 +220,7 @@
                                 placeholder="Quantity" spellcheck="false" data-ms-editor="true" min="1" max="99"
                                 maxlength="2" required>
                         </div>
-                        <div class="buttons">
+                        <div class="buttons mb-4">
                             <button type="button" id="clrbutton" form="prodlist"
                                 class="btn btn-warning btn mx-auto me-3">Clear</button>
                             <button type="submit" id="addprodbutton" form="prodlist"

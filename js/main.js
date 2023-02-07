@@ -254,7 +254,14 @@ function handleForm(event) {
 				clearFormFields()
 				window.location.reload()
 				console.log(response)
-				alert(response)
+				alert("Request sended")
+			},
+			failed: function (response) {
+				hideLoader()
+				clearFormFields()
+				window.location.reload()
+				console.log(response)
+				alert("Fail, check error in console.")
 			},
 		})
 	} else {

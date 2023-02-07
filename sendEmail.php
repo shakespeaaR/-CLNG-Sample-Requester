@@ -43,9 +43,8 @@
 
         //Email Settings
         $mail->setFrom($email, "Sample Request");
-        $mail->addAddress("mailer@shakespear.xaa.pl"); //enter you email address
+        $mail->addAddress($email); //enter you email address
         $mail->addReplyTo($email, $name);
-        $mail->addCC($email);
         $mail->addCC($dw);
 
         //Conternt
@@ -66,7 +65,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>$recip</strong>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>$recip
                     </td>
                 </tr>
             </tbody>
@@ -81,7 +80,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>$revinfo</strong>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>$revinfo
                     </td>
                 </tr>
             </tbody>
@@ -97,7 +96,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'><strong>$comment</strong>
+                    <td style='border: 1px solid #000;padding: 10px 15px;text-align: center;'>$comment
                     </td>
                 </tr>
             </tbody>

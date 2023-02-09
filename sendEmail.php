@@ -34,10 +34,10 @@
         $mail->CharSet = 'UTF-8';
         //SMTP Settings 
         $mail->isSMTP();
-        $mail->Host = "mail.shakespear.xaa.pl";
+        $mail->Host = "HOST SKRZYNKI POCZTOWEJ";
         $mail->SMTPAuth = true;
-        $mail->Username = "mailer@shakespear.xaa.pl"; //enter you email address
-        $mail->Password = ';qt(w!$V?45l'; //enter you email password
+        $mail->Username = "EMAIL SKRZYBKIPOCZTOWEJ"; //enter you email address
+        $mail->Password = 'HASLO SKRZYNKI POCZTOWEJ'; //enter you email password
         $mail->Port = 465;
         $mail->SMTPSecure = "ssl";
 

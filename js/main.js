@@ -125,8 +125,8 @@ function addProduct(event) {
 	tr.appendChild(td)
 	td = document.createElement('td')
 	let button = document.createElement('button')
-	button.innerHTML = 'Remove'
-	button.className = 'btn btn-outline-danger btn-sm'
+	button.innerHTML = '<i class="bi bi-trash3"></i>'
+	button.className = 'btn btn-danger btn-sm cst-btn'
 	button.addEventListener('click', function () {
 		tbody.removeChild(tr)
 		for (let i = 0; i < tbody.children.length; i++) {
@@ -149,12 +149,14 @@ function checktable() {
 	if (products.rows.length == 0) {
 		var row = products.insertRow(0)
 		var cell1 = row.insertCell(0)
-		cell1.innerHTML = 'No products'
+		cell1.innerHTML = '<i class="bi bi-emoji-dizzy bi-color" style="font-size: 50px; font-style: normal;"><br>No products</i>'
 		cell1.setAttribute('colspan', '5')
 	} else {
 		var row = products.rows[0]
 		var cell1 = row.cells[0]
-		if (cell1.innerHTML == 'No products') {
+		if (
+			cell1.innerHTML == '<i class="bi bi-emoji-dizzy bi-color" style="font-size: 50px; font-style: normal;"><br>No products</i>'
+		) {
 			products.deleteRow(0)
 		}
 	}
@@ -254,14 +256,14 @@ function handleForm(event) {
 				clearFormFields()
 				window.location.reload()
 				console.log(response)
-				alert("Request sended")
+				alert('Request sended')
 			},
 			failed: function (response) {
 				hideLoader()
 				clearFormFields()
 				window.location.reload()
 				console.log(response)
-				alert("Fail, check error in console.")
+				alert('Fail, check error in console.')
 			},
 		})
 	} else {

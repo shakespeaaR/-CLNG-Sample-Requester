@@ -205,14 +205,20 @@ a:hover {
 }
 
 button {
+	display: flex;
 	box-shadow: 1px 1px 1px #000;
-	width: 200px;
+	width: auto;
+	i {
+		margin-left: 10px;
+	}
 }
 
-.buttons {
-	button {
-		width: 150px;
-	}
+.cst-btn i {
+	margin: 0px;
+}
+
+.bi-color {
+	color: #dc3545;
 }
 
 .loader {

@@ -22,10 +22,6 @@ body {
   color: #c1c1c1;
 }
 
-:-ms-input-placeholder {
-  color: #c1c1c1;
-}
-
 ::placeholder {
   color: #c1c1c1;
 }
@@ -212,12 +208,20 @@ a:hover {
 }
 
 button {
+  display: flex;
   box-shadow: 1px 1px 1px #000;
-  width: 200px;
+  width: auto;
+}
+button i {
+  margin-left: 10px;
 }
 
-.buttons button {
-  width: 150px;
+.cst-btn i {
+  margin: 0px;
+}
+
+.bi-color {
+  color: #dc3545;
 }
 
 .loader {
@@ -228,29 +232,7 @@ button {
   height: 40px;
   border-radius: 10%;
   border: 6.8px solid #fff;
-  -webkit-animation: spinner-kk2y8v 3s infinite;
-          animation: spinner-kk2y8v 3s infinite;
-}
-
-@-webkit-keyframes spinner-kk2y8v {
-  0% {
-    transform: rotate(0deg);
-  }
-  10%, 15% {
-    transform: rotate(-90deg);
-  }
-  20%, 25% {
-    transform: rotate(-180deg);
-  }
-  30%, 35% {
-    transform: rotate(-90deg);
-  }
-  40%, 50% {
-    transform: rotate(-360deg);
-  }
-  100% {
-    transform: rotate(1080deg);
-  }
+  animation: spinner-kk2y8v 3s infinite;
 }
 
 @keyframes spinner-kk2y8v {
